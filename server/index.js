@@ -7,7 +7,6 @@ import productsRouter from './routes/products.js';
 import cartRouter from './routes/cart.js';
 import db from './services/db.js';
 
-// Serve static client if placed adjacent (for local dev convenience)
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const CLIENT_DIR = path.resolve(__dirname, '../client');
@@ -19,7 +18,6 @@ app.use(cors());
 app.use(express.json());
 app.use('/images', express.static(path.join(__dirname, '/client/images')));
 
-// Simple health check
 app.get('/api/health', async (req, res) => {
   try {
     const [rows] = await db.query('SELECT 1 AS ok');
